@@ -1,5 +1,7 @@
 package com.polymt.inf8405.tp3.baseclass;
 
+import android.location.Location;
+
 import java.util.List;
 
 /**
@@ -30,7 +32,7 @@ public class VideoManager {
         return null;
     }
 
-    List<VideoInfo> findVideoSurrounding(String userId, int radius, String privacy){
+    List<VideoInfo> findVideoSurrounding(Location position, int radius, String userId, String privacy){
         //TODO:"unimplemented method";
         return null;
     }
