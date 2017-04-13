@@ -1,4 +1,4 @@
-package com.polymt.inf8405.tp3.BaseClass;
+package com.polymt.inf8405.tp3.baseclass;
 
 import android.location.Location;
 import android.media.Image;
