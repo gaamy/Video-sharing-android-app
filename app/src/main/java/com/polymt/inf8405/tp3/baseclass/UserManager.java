@@ -21,4 +21,23 @@ public class UserManager {
 
         }
     }
+
+
+    void addUser(String userId, String userName){
+        //TODO:"unimplemented method";
+    }
+
+    String findUserId(String userName){
+        //TODO:"unimplemented method";
+        return "unimplemented method";
+    }
+
+    void addFriend(String userId, String friendUserId){
+        //TODO:"unimplemented method";
+    }
+
+    void removeFriend(String userId, String friendUserId){
+        //TODO:"unimplemented method";
+    }
+
 }
