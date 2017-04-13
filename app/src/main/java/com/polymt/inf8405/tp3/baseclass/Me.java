@@ -21,7 +21,6 @@ public class Me extends User {
     private static Me m_me;
     private List<Friend> friends;
     private Location currentLocation;
-    private String uid;
 
     public static Me getMe(){
         return m_me;
@@ -31,7 +30,7 @@ public class Me extends User {
         m_me = new Me(uId);
     }
     private Me(String uId){
-        uid = uId;
+        uniqueId = uId;
         loadInfo();
         loadFriend();
         loadVideos();
@@ -43,7 +42,7 @@ public class Me extends User {
     }
 
     private void loadVideos() {
-        VideoManager.getInstance().loadMyVideo(uid);
+        VideoManager.getInstance().loadMyVideo(uniqueId);
     }
 
     private void loadFriend() {
