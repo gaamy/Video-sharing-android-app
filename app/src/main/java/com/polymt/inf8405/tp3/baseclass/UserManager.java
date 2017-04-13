@@ -23,7 +23,7 @@ public class UserManager {
     }
 
 
-    void addUser(String userId, String userName){
+    void addUser(String userId, String userName, String userMail){
         //TODO:"unimplemented method";
     }
 

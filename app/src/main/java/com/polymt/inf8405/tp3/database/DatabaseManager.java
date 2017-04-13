@@ -6,6 +6,12 @@ package com.polymt.inf8405.tp3.database;
 
 public class DatabaseManager {
 
+    void pushUser(){}
+    void updateUser(){}
+
+    void updateVideo(){}
+    void pushVideo(){}
+
 
 
 
