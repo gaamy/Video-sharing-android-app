@@ -18,9 +18,33 @@ import java.util.List;
  */
 
 public class Me extends User {
+    private static Me m_me;
     private List<Friend> friends;
     private Location currentLocation;
+
+    public static Me getMe(){
+        return m_me;
+    }
+
     private Me(){
+        loadFriend();
+        loadVideos();
+        loadGps();
+    }
+
+    private void loadVideos() {
+        VideoManager.getInstance().loadMyVideo(this.name);
+    }
+
+    private void loadFriend() {
+        //TODO load friends from database
+    }
+
+    private void updateLocation(Location location){
+        currentLocation = location;
+    }
+    private void loadGps(){
+
         int answerRequest=0;
         LocationManager locationManager;
         if (ContextHolder.getMainContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextHolder.getMainContext().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -46,7 +70,7 @@ public class Me extends User {
             locationManager.requestLocationUpdates(provider, 20000, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                        updateLocation(location);
+                    updateLocation(location);
                 }
                 @Override
                 public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -60,7 +84,8 @@ public class Me extends User {
             });
         }
     }
-    private void updateLocation(Location location){
-        currentLocation = location;
+
+    public Location getLocation(){
+        return currentLocation;
     }
 }
