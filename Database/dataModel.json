@@ -1,0 +1,57 @@
+//datamodel sample
+{
+  "users": {
+    "user1": {
+      "$user_id":{
+        ".write": "$user_id == auth.uid"
+      },
+      "name": "Gabriel",
+      "e-mail": "gabriel.amyot@gmail.com",
+      "friends":{
+        "user2" : true
+      },
+      "videos": {
+        "video1": true
+      }
+    },
+    "user2": {
+      "$user_id":{
+        ".write": "$user_id == auth.uid"
+      },
+      "name": "wassim",
+      "e-mail": "asd@hotmail.com",
+      "friends":{
+        "user1" : true
+      },
+      "videos": {
+        "video2": true
+      }
+    }
+
+  },
+  "videos": {
+    "video1": {
+      "name": "Alpha Group",
+      "geolocation":{
+          "latitude": 123456,
+          "longitude": 12345
+      },
+      "date": "2012-04-23T18:25:43.511Z",
+      "users": {
+        "user1": true
+      }
+    },
+    "video2": {
+      "name": "beta Group",
+      "geolocation":{
+        "latitude": 4563,
+        "longitude": 345
+      },
+      "date": "2012-04-23T18:25:43.511Z",
+      "users": {
+        "user1": true
+      }
+    }
+
+  }
+}
