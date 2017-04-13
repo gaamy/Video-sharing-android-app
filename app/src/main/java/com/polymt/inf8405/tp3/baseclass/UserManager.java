@@ -1,4 +1,6 @@
-package com.polymt.inf8405.tp3.BaseClass;
+package com.polymt.inf8405.tp3.baseclass;
+
+
 
 /**
  * Created by Louis-Philippe on 4/6/2017.
@@ -15,10 +17,12 @@ public class UserManager {
     private UserManager(){
 
     }
-    public void loggin(String name, String password){
+
+    public void logging(String uId){
+
         //TODO verify info are good
         if(true){
-
+            Me.setMe(uId);
         }
     }
 }

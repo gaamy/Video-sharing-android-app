@@ -1,4 +1,4 @@
-package com.polymt.inf8405.tp3.BaseClass;
+package com.polymt.inf8405.tp3.baseclass;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,10 +26,18 @@ public class Me extends User {
         return m_me;
     }
 
-    private Me(){
+    public static void setMe(String uId){
+        m_me = new Me(uId);
+    }
+    private Me(String uId){
+        loadInfo(uId);
         loadFriend();
         loadVideos();
         loadGps();
+    }
+
+    private void loadInfo(String uId) {
+
     }
 
     private void loadVideos() {

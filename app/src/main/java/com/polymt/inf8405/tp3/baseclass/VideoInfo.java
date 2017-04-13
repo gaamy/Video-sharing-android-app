@@ -1,4 +1,4 @@
-package com.polymt.inf8405.tp3.BaseClass;
+package com.polymt.inf8405.tp3.baseclass;
 
 import android.location.Location;
 import android.media.Image;
@@ -16,4 +16,6 @@ public class VideoInfo {
     private Date date;
     private Image thumbnail;
     private String description;
+
+    public boolean hasVideoData(){return rawData!=null;}
 }
