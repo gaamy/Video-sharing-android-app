@@ -2,17 +2,19 @@ package com.polymt.inf8405.tp3;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
 
-    private GoogleMap mMap;
+    private GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public void onMapClick(LatLng point) {
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        map.animateCamera(CameraUpdateFactory.newLatLng(point));
+
+        Toast.makeText(getApplicationContext(), point.toString(),
+                Toast.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public void onMapLongClick(LatLng point) {
+        map.addMarker(new MarkerOptions()
+                .position(point)
+                .title("You are here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        map = googleMap;
+        map.setOnMapClickListener(this);
+        map.setOnMapLongClickListener(this);
+
     }
 }
