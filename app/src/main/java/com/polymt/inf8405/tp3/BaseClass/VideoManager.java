@@ -5,8 +5,8 @@ package com.polymt.inf8405.tp3.BaseClass;
  */
 
 public class VideoManager {
-    private VideoManager m_videoManager;
-    public VideoManager getInstance(){
+    private static VideoManager m_videoManager;
+    public static VideoManager getInstance(){
         if(m_videoManager == null){
             m_videoManager = new VideoManager();
         }
@@ -14,5 +14,8 @@ public class VideoManager {
     }
     private VideoManager(){
 
+    }
+    public void loadMyVideo(String name){
+        //TODO load infos associatedwith my own video
     }
 }
