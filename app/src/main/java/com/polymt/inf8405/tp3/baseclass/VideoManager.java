@@ -19,7 +19,7 @@ public class VideoManager {
     private VideoManager(){
 
     }
-    public void loadMyVideo(String name){
+    public void loadMyVideo(String uId){
         //TODO load infos associatedwith my own video
     }
 

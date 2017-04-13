@@ -16,4 +16,6 @@ public class VideoInfo {
     private Date date;
     private Image thumbnail;
     private String description;
+
+    public boolean hasVideoData(){return rawData!=null;}
 }

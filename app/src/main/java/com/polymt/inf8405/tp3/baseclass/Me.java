@@ -21,19 +21,29 @@ public class Me extends User {
     private static Me m_me;
     private List<Friend> friends;
     private Location currentLocation;
+    private String uid;
 
     public static Me getMe(){
         return m_me;
     }
 
-    private Me(){
+    public static void setMe(String uId){
+        m_me = new Me(uId);
+    }
+    private Me(String uId){
+        uid = uId;
+        loadInfo();
         loadFriend();
         loadVideos();
         loadGps();
     }
 
+    private void loadInfo() {
+        //TODO Load info associated with UID
+    }
+
     private void loadVideos() {
-        VideoManager.getInstance().loadMyVideo(this.name);
+        VideoManager.getInstance().loadMyVideo(uid);
     }
 
     private void loadFriend() {
