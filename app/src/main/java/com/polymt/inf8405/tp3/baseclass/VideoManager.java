@@ -1,5 +1,9 @@
 package com.polymt.inf8405.tp3.baseclass;
 
+import android.location.Location;
+
+import java.util.List;
+
 /**
  * Created by Louis-Philippe on 4/6/2017.
  */
@@ -15,7 +19,11 @@ public class VideoManager {
     private VideoManager(){
 
     }
-    public void loadMyVideo(String name){
+    public void loadMyVideo(String uId){
         //TODO load infos associatedwith my own video
+    }
+
+    public List<VideoInfo> getVideoInRange(Location position,int range){
+        return null;
     }
 }
