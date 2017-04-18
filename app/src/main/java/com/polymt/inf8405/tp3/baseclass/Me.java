@@ -26,14 +26,23 @@ public class Me extends User {
         return m_me;
     }
 
-    private Me(){
+    public static void setMe(String uId){
+        m_me = new Me(uId);
+    }
+    private Me(String uId){
+        uniqueId = uId;
+        loadInfo();
         loadFriend();
         loadVideos();
         loadGps();
     }
 
+    private void loadInfo() {
+        //TODO Load info associated with UID
+    }
+
     private void loadVideos() {
-        VideoManager.getInstance().loadMyVideo(this.name);
+        VideoManager.getInstance().loadMyVideo(uniqueId);
     }
 
     private void loadFriend() {
