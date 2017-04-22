@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.polymt.inf8405.tp3.baseclass.ContextHolder;
-
 /**
  * Created by Wassim on 04/04/2017.
  */
@@ -18,7 +16,6 @@ public class Videos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videos);
-        ContextHolder.setMainContext(this);
         getSupportActionBar().setTitle("My Videos");
        // butListener();
     }
