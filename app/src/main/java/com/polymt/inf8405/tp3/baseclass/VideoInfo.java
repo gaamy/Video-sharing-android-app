@@ -1,7 +1,10 @@
 package com.polymt.inf8405.tp3.baseclass;
 
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.media.Image;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
 
@@ -14,8 +17,12 @@ public class VideoInfo {
     private Location videoLocation;
     private byte[] rawData;
     private Date date;
-    private Image thumbnail;
+    private Bitmap thumbnail;
     private String description;
+    private String name;
 
     public boolean hasVideoData(){return rawData!=null;}
+    public LatLng getCoordinate(){return new LatLng(videoLocation.getLatitude(), videoLocation.getLongitude());}
+    public String getName(){return name;}
+    public Bitmap getThumbnail(){return thumbnail;}
 }

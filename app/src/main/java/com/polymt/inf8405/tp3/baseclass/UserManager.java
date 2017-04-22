@@ -17,7 +17,7 @@ public class UserManager {
     private UserManager(){
 
     }
-    public void loggin(String name, String password){
+    public void logging(String uId){
         Me.setMe(uId);
     }
 

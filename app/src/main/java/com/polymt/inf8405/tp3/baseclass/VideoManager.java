@@ -32,7 +32,12 @@ public class VideoManager {
         return null;
     }
 
-    List<VideoInfo> findVideoSurrounding(Location position, int radius, String userId, String privacy){
+    public List<VideoInfo> findVideoSurrounding(Location position, int radius){
+        String userId = Me.getMe().getUniqueId();
+        String privacy = "NoClue";//TODO wth is the name
+        return findVideoSurrounding(position,radius,userId,privacy);
+    }
+    private List<VideoInfo> findVideoSurrounding(Location position, int radius, String userId, String privacy){
         //TODO:"unimplemented method";
         return null;
     }

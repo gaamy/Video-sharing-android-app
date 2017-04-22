@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class Me extends User {
     private static Me m_me;
     private List<Friend> friends;
     private Location currentLocation;
-
+    private Invokable invokeLocation;
     public static Me getMe(){
         return m_me;
     }
@@ -49,8 +50,14 @@ public class Me extends User {
         //TODO load friends from database
     }
 
+    public void setInvokeLocationFunc(Invokable inv){
+        invokeLocation = inv;
+    }
     private void updateLocation(Location location){
         currentLocation = location;
+        if(invokeLocation!=null){
+            invokeLocation.invoke();
+        }
     }
     private void loadGps(){
 
