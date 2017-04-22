@@ -25,4 +25,6 @@ public class VideoInfo {
     public LatLng getCoordinate(){return new LatLng(videoLocation.getLatitude(), videoLocation.getLongitude());}
     public String getName(){return name;}
     public Bitmap getThumbnail(){return thumbnail;}
+    public String getDescription(){return description;}
+    public int getUniqueId(){return uniqueId;}
 }

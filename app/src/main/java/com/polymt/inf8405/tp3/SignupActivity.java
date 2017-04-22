@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.polymt.inf8405.tp3.baseclass.ContextHolder;
 import com.polymt.inf8405.tp3.baseclass.UserManager;
 
 public class SignupActivity extends AppCompatActivity {
@@ -87,6 +88,7 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {//if signin succeds, send user to login screed
+                                    ContextHolder.setMainContext(SignupActivity.this);
                                     UserManager.getIntance().logging("name here");
                                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                     finish();
