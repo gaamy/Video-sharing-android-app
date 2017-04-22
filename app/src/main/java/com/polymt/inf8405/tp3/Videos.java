@@ -32,15 +32,19 @@ public class Videos extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.action_friends:
+                startActivity(new Intent(this, Friends.class));
+                return true;
+            case R.id.action_map:
+                startActivity(new Intent(this, MapsActivity.class));
+                return true;
             case R.id.action_settings:
                 startActivity(new Intent(this, Settings.class));
                 return true;
-
             case R.id.action_logout:
                 startActivity(new Intent(this,MainActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
-
     }
 }

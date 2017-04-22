@@ -5,6 +5,12 @@
     <string name="action_logout">Log out</string>
     <string name="action_addFriend">Add friend</string>
     <string name="action_addVideo">Add video</string>
+    <string name="action_friends">Friends</string>
+    <string name="action_map">Map</string>
+    <string name="action_videos">Videos</string>
+
+
+
 
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>

@@ -8,6 +8,16 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_friends"
+        android:title="Friends"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_map"
+        android:title="Map"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_settings"
         android:title="Settings"
         app:showAsAction="never" />
