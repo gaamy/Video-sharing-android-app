@@ -85,17 +85,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         map = googleMap;
         map.setOnMarkerClickListener(this);
+        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         Invokable in = new Invokable(){
             @Override
             public void invoke() {
                 Location loc = Me.getMe().getLocation();
                 LatLng coordinate = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
-                        coordinate,15);
+                        coordinate,18);
+                //CameraUpdate location = CameraUpdateFactory.newLatLng(
+                //        coordinate);
                 map.moveCamera(location);
 
                 int radius = 15;//TODO need to figure out the radius
                 List<VideoInfo> videoToPutMarker = VideoManager.getInstance().findVideoSurrounding(loc,radius);
+                if(videoToPutMarker==null)
+                    return;
                 for(VideoInfo vi : videoToPutMarker){
                     Marker m = map.addMarker(new MarkerOptions()
                             .position(vi.getCoordinate())

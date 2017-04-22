@@ -52,6 +52,7 @@ public class Me extends User {
 
     public void setInvokeLocationFunc(Invokable inv){
         invokeLocation = inv;
+        inv.invoke();
     }
     private void updateLocation(Location location){
         currentLocation = location;
