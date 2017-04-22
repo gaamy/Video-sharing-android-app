@@ -1,8 +1,11 @@
 package com.polymt.inf8405.tp3;
 
+import android.content.Intent;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -35,6 +38,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+
+        getMenuInflater().inflate(R.menu.map_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_videos:
+                startActivity(new Intent(this, Videos.class));
+                return true;
+
+            case R.id.action_friends:
+                startActivity(new Intent(this, MapsActivity.class));
+                return true;
+
+            case R.id.action_settings:
+                startActivity(new Intent(this, Settings.class));
+                return true;
+
+            case R.id.action_logout:
+                startActivity(new Intent(this,MainActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 
     /**
      * Manipulates the map once available.

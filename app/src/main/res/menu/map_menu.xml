@@ -2,15 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <item
         android:id="@+id/action_videos"
         android:title="Videos"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_map"
-        android:title="Map"
+        android:id="@+id/action_friends"
+        android:title="Friends"
         app:showAsAction="never" />
 
     <item
@@ -23,10 +22,5 @@
         android:title="Log out"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_addFriend"
-        android:title="Add friend"
-        app:showAsAction="always" />
 
 </menu>
