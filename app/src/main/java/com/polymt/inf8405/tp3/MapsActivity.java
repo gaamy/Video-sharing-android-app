@@ -19,12 +19,12 @@ import com.polymt.inf8405.tp3.baseclass.Me;
 import com.polymt.inf8405.tp3.baseclass.VideoInfo;
 import com.polymt.inf8405.tp3.baseclass.VideoManager;
 
+import java.util.HashMap;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap map;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,29 +45,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @Override
-    public void onMapClick(LatLng point) {
-       /* map.animateCamera(CameraUpdateFactory.newLatLng(point));
-
-        Toast.makeText(getApplicationContext(), point.toString(),
-                Toast.LENGTH_LONG).show();*/
-    }
-
-
-    @Override
-    public void onMapLongClick(LatLng point) {
-        map.addMarker(new MarkerOptions()
-                .position(point)
-                .title("You are here")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         map = googleMap;
-        map.setOnMapClickListener(this);
-        map.setOnMapLongClickListener(this);
+        map.setOnMarkerClickListener(this);
         Invokable in = new Invokable(){
             @Override
             public void invoke() {
@@ -80,13 +63,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 int radius = 15;//TODO need to figure out the radius
                 List<VideoInfo> videoToPutMarker = VideoManager.getInstance().findVideoSurrounding(loc,radius);
                 for(VideoInfo vi : videoToPutMarker){
-                    map.addMarker(new MarkerOptions()
+                    Marker m = map.addMarker(new MarkerOptions()
                             .position(vi.getCoordinate())
                             .title(vi.getName())
+                            .snippet(vi.getDescription())
                             .icon(BitmapDescriptorFactory.fromBitmap(vi.getThumbnail())));
+                    m.setTag(vi.getUniqueId());
                 }
             }
         };
         Me.getMe().setInvokeLocationFunc(in);
+    }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+        int uniqueId = (int)marker.getTag();
+        //TODO pop message to show video
+        return false;
     }
 }
