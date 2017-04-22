@@ -15,17 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="com.google.android.maps.v2.API_KEY"
                 android:value="AIzaSyAEZaQQk4GlLJHkn-Xx8M3wuthesK7pZ6g" />
         </activity>
-        <activity android:name=".Videos" />
+        <activity android:name=".Videos" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".Friends" />
         <activity
             android:name=".Share"
