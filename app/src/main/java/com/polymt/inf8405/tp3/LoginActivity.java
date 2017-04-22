@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.polymt.inf8405.tp3.baseclass.ContextHolder;
 import com.polymt.inf8405.tp3.baseclass.UserManager;
 
 public class LoginActivity extends AppCompatActivity {
@@ -99,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                    ContextHolder.setMainContext(LoginActivity.this);
+                                    UserManager.getIntance().logging("name here");
                                     Intent intent = new Intent(LoginActivity.this, Videos.class);
 
                                     startActivity(intent);
