@@ -12,6 +12,9 @@
       },
       "videos": {
         "video1": true
+      },
+      "unlocked_videos": {
+        "video2":true
       }
     },
     "user2": {
@@ -23,35 +26,58 @@
       "friends":{
         "user1" : true
       },
-      "videos": {
+      "owned_videos": {
         "video2": true
+      },
+      "unlocked_videos": {
+        "video1": true
       }
     }
 
   },
   "videos": {
+    "video_id": "tyth",
     "video1": {
       "name": "Alpha Group",
+      "description": "fdsgbraeherghaehaea",
       "geolocation":{
           "latitude": 123456,
           "longitude": 12345
       },
-      "date": "2012-04-23T18:25:43.511Z",
-      "users": {
+      "date": "2019-04-23T18:25:43.511Z",
+      "user_acces": {
         "user1": true
-      }
+      },
+      "thumbnail_path": "thumbnail1/path",
+      "data_path": "video1/path"
     },
     "video2": {
       "name": "beta Group",
+      "description": "bitchers",
       "geolocation":{
         "latitude": 4563,
         "longitude": 345
       },
       "date": "2012-04-23T18:25:43.511Z",
-      "users": {
-        "user1": true
-      }
+      "user_acces": {
+        "user2": true
+      },
+      "thumbnail_path": "thumbnail2/path",
+      "data_path": "video2/path"
+    },
+    "video3": {
+      "name": "asd",
+      "description": "asasdasdqw",
+      "geolocation":{
+        "latitude": 4563,
+        "longitude": 11111
+      },
+      "date": "2012-04-23T18:25:43.511Z",
+      "user_acces": {
+        "user2": true
+      },
+      "thumbnail_path": "thumbnail3/path",
+      "data_path": "video3/path"
     }
-
   }
 }
