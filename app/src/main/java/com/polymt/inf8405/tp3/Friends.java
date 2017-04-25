@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.polymt.inf8405.tp3.baseclass.Me;
+
 /**
  * Created by Wassim on 11/04/2017.
  */
@@ -20,6 +22,8 @@ public class Friends extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Friends list");
         // butListener();
+
+        Me.getMe().getFriend();
     }
 
     @Override

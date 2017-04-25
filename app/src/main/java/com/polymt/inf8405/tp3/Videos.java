@@ -11,6 +11,7 @@ import android.widget.VideoView;
 
 import com.polymt.inf8405.tp3.baseclass.ContextHolder;
 import com.polymt.inf8405.tp3.baseclass.Me;
+import com.polymt.inf8405.tp3.baseclass.VideoManager;
 
 /**
  * Created by Wassim on 04/04/2017.
@@ -35,7 +36,8 @@ public class Videos extends AppCompatActivity {
         //TODO set the user instead of asd
 
         getSupportActionBar().setTitle("My Videos");
-       // butListener();
+
+        VideoManager.getInstance().loadMyVideo();
     }
 
     @Override

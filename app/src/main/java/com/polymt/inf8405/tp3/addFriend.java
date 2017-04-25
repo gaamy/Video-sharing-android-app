@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.polymt.inf8405.tp3.baseclass.Me;
+
 /**
  * Created by Wassim on 25/04/2017.
  */
@@ -39,22 +41,29 @@ public class addFriend extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //EditText text = (EditText)findViewById(R.id.editTextEmail);
+                EditText text = (EditText)findViewById(R.id.editTextEmail);
 
 
-                //TODO backend
+                Me.getMe().addFriend(text.getText().toString());
 
-                AlertDialog.Builder build = new AlertDialog.Builder(addFriend.this);
-                build.setTitle("Friend added !");
-                build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-                //build.setCancelable(true);
-                build.show();
-
+                if(Me.getMe().addFriend(text.getText().toString())) {
+                    AlertDialog.Builder build = new AlertDialog.Builder(addFriend.this);
+                    build.setTitle("Friend added !");
+                    build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    build.show();
+                }
+                else {
+                    AlertDialog.Builder build = new AlertDialog.Builder(addFriend.this);
+                    build.setTitle("Email address could not be found !");
+                    build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    build.show();
+                }
 
 //                Intent i = new Intent(getBaseContext(), GroupActivity.class);
 //                startActivity(i);

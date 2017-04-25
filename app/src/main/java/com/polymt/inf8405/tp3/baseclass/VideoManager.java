@@ -23,7 +23,7 @@ public class VideoManager {
     private VideoManager(){
 
     }
-    public List<VideoInfo> loadMyVideo(String uId){
+    public List<VideoInfo> loadMyVideo(){
         //TODO load infos associatedwith my own video
         return null;
     }
