@@ -30,6 +30,7 @@ public class Videos extends AppCompatActivity {
 
         ContextHolder.setMainContext(this);
         Me.setMe("ASD");
+        //TODO set the user instead of asd
 
         getSupportActionBar().setTitle("My Videos");
        // butListener();

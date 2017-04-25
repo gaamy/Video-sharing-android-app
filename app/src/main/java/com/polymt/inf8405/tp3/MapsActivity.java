@@ -98,6 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 map.moveCamera(location);
 
                 int radius = 15;//TODO need to figure out the radius
+
                 List<VideoInfo> videoToPutMarker = VideoManager.getInstance().findVideoSurrounding(loc,radius);
                 if(videoToPutMarker==null)
                     return;
@@ -106,7 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .position(vi.getCoordinate())
                             .title(vi.getName())
                             .snippet(vi.getDescription())
-                            .icon(BitmapDescriptorFactory.fromBitmap(vi.getThumbnail())));
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
                     m.setTag(vi.getUniqueId());
                 }
             }
@@ -118,7 +119,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onMarkerClick(final Marker marker) {
         int uniqueId = (int)marker.getTag();
         //TODO pop message to show video
+        Location loc = new Location("");
+        loc.setLatitude(marker.getPosition().latitude);
+        loc.setLongitude(marker.getPosition().longitude);
+        if(Me.getMe().getLocation().distanceTo(loc)<=50){
 
-        return false;
+            //Open message to ask for view of the video
+            if(true){
+                //if yes to view, then show
+                // return true;
+            }else{
+                return false;
+            }
+        }
+        return false;//Show the info on the map
     }
 }

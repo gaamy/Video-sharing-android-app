@@ -2,6 +2,9 @@ package com.polymt.inf8405.tp3.baseclass;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,8 +22,9 @@ public class VideoManager {
     private VideoManager(){
 
     }
-    public void loadMyVideo(String uId){
+    public List<VideoInfo> loadMyVideo(String uId){
         //TODO load infos associatedwith my own video
+        return null;
     }
 
     void postVideo(VideoInfo video){
@@ -38,7 +42,10 @@ public class VideoManager {
         return findVideoSurrounding(position,radius,userId,privacy);
     }
     private List<VideoInfo> findVideoSurrounding(Location position, int radius, String userId, String privacy){
+
+        ArrayList<VideoInfo> vi = new ArrayList<>();
+
         //TODO:"unimplemented method";
-        return null;
+        return vi;
     }
 }
