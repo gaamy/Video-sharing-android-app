@@ -53,9 +53,13 @@ public class Videos extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
-            Uri videoUri = intent.getData();
-            vid.setVideoURI(videoUri);
+            if (intent != null && intent.getExtras() != null) {
+                Uri videoUri = intent.getData();
+                vid.setVideoURI(videoUri);
+            }
         }
     }
 

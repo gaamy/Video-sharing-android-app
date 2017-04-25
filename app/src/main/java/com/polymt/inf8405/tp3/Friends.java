@@ -46,7 +46,7 @@ public class Friends extends AppCompatActivity {
                 return true;
 
             case R.id.action_addFriend:
-                // backend here
+                startActivity(new Intent(this, addFriend.class));
                 return true;
 
             case R.id.action_logout:

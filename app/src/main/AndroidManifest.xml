@@ -33,6 +33,8 @@
         </intent-filter>
         </activity>
         <activity android:name=".Friends" />
+        <activity android:name=".addFriend" />
+
         <activity
             android:name=".Share"
             android:parentActivityName=".Videos">
