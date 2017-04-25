@@ -18,7 +18,7 @@ public class Friends extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.videos);
+        setContentView(R.layout.friends);
 
         getSupportActionBar().setTitle("Friends list");
         // butListener();
