@@ -5,7 +5,24 @@ package com.polymt.inf8405.tp3.baseclass;
  */
 
 public abstract class User {
-    protected int uniqueId;
+    protected String uniqueId;
+    public String getUniqueId(){return uniqueId;}
     protected String name;
+    protected String email;
     protected String description;
+    public User(String name, String email){
+        this.name = name;
+        this.email=email;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+    public User(String uniqueId){
+        this.uniqueId = uniqueId;
+        loadInfo();
+    }
+    private void loadInfo() {
+        //TODO Load info associated with UID
+        //Name, email,descrition
+    }
 }

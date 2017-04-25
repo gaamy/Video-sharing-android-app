@@ -33,12 +33,20 @@ public class Friends extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.action_videos:
+                startActivity(new Intent(this, Videos.class));
+                return true;
+
+            case R.id.action_map:
+                startActivity(new Intent(this, MapsActivity.class));
+                return true;
+
             case R.id.action_settings:
                 startActivity(new Intent(this, Settings.class));
                 return true;
 
             case R.id.action_addFriend:
-                // backend here
+                startActivity(new Intent(this, addFriend.class));
                 return true;
 
             case R.id.action_logout:

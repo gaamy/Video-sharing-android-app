@@ -1,5 +1,7 @@
 package com.polymt.inf8405.tp3.baseclass;
 
+
+
 /**
  * Created by Louis-Philippe on 4/6/2017.
  */
@@ -15,11 +17,8 @@ public class UserManager {
     private UserManager(){
 
     }
-    public void loggin(String name, String password){
-        //TODO verify info are good
-        if(true){
-
-        }
+    public void logging(String uId){
+        Me.setMe(uId);
     }
 
 
@@ -39,5 +38,4 @@ public class UserManager {
     void removeFriend(String userId, String friendUserId){
         //TODO:"unimplemented method";
     }
-
 }
