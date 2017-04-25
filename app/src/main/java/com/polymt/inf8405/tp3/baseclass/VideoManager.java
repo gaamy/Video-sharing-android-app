@@ -13,6 +13,7 @@ import java.util.List;
 
 public class VideoManager {
     private static VideoManager m_videoManager;
+    public static VideoInfo testVideoInfo;
     public static VideoManager getInstance(){
         if(m_videoManager == null){
             m_videoManager = new VideoManager();
