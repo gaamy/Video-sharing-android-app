@@ -118,6 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onMarkerClick(final Marker marker) {
         int uniqueId = (int)marker.getTag();
         //TODO pop message to show video
+
         return false;
     }
 }

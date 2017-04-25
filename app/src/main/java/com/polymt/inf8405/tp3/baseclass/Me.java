@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -104,5 +105,13 @@ public class Me extends User {
 
     public Location getLocation(){
         return currentLocation;
+    }
+
+    public List<Friend> getFriend(){
+        if(friends!=null){
+            return friends;
+        }else{
+            return new ArrayList<>();
+        }
     }
 }
