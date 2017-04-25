@@ -20,6 +20,7 @@ public class VideoInfo {
     private Bitmap thumbnail;
     private String description;
     private String name;
+    private String nameOfPoster;
 
     public boolean hasVideoData(){return rawData!=null;}
     public LatLng getCoordinate(){return new LatLng(videoLocation.getLatitude(), videoLocation.getLongitude());}
@@ -27,4 +28,20 @@ public class VideoInfo {
     public Bitmap getThumbnail(){return thumbnail;}
     public String getDescription(){return description;}
     public int getUniqueId(){return uniqueId;}
+    public void setVideoData(){
+        //TODO whatever video data is
+    }
+
+    @Override
+    public String toString(){
+        return name+" Posted by "+ nameOfPoster;
+    }
+
+    public VideoInfo(String name,Location location,String description,String nameOfPoster){
+        uniqueId=1;
+        this.name = name;
+        this.videoLocation= location;
+        this.description = description;
+        this.nameOfPoster = nameOfPoster;
+    }
 }

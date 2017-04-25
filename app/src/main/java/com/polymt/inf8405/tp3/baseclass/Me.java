@@ -32,15 +32,10 @@ public class Me extends User {
         m_me = new Me(uId);
     }
     private Me(String uId){
-        uniqueId = uId;
-        loadInfo();
+        super(uId);
         loadFriend();
         loadVideos();
         loadGps();
-    }
-
-    private void loadInfo() {
-        //TODO Load info associated with UID
     }
 
     private void loadVideos() {
@@ -49,6 +44,13 @@ public class Me extends User {
 
     private void loadFriend() {
         //TODO load friends from database
+    }
+
+    public void addFriend(String email){
+        //TODO add the friend
+        if(true){//add successfull
+            loadFriend();
+        }
     }
 
     public void setInvokeLocationFunc(Invokable inv){
