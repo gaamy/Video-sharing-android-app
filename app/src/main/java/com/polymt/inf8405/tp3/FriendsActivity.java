@@ -32,25 +32,28 @@ public class FriendsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("FriendsActivity list");
         // butListener();
 
-        Me.getMe().getFriend();
-
-
         lv = (ListView) findViewById(R.id.listviewFriends);
+        friendList = new ArrayList<>();
+        friendAdap = new friendsAdapter(friendList, this){
+            @Override
+            public void update() {
+                showFriendsList();
+            }
+        };
         showFriendsList();
     }
 
     private void showFriendsList(){
-
+        friendAdap.clear();
         /*friendList = new ArrayList<>();
         friendList.add(new Friend("asd"));
         friendList.add(new Friend("asdasd"));*/
+
         friendList = Me.getMe().getFriend();
-        friendAdap = new friendsAdapter(friendList, this);
-//        friendAdap.addAll(friendList);
+        friendAdap.addAll(friendList);
 
         //friendAdap.notifyDataSetChanged();
         lv.setAdapter(friendAdap);
-
     }
 
 

@@ -15,6 +15,7 @@ import com.polymt.inf8405.tp3.baseclass.Me;
 import com.polymt.inf8405.tp3.baseclass.VideoInfo;
 import com.polymt.inf8405.tp3.baseclass.VideoManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,6 +49,13 @@ public class VideosActivity extends AppCompatActivity {
 
 
         lv = (ListView) findViewById(R.id.listview);
+        videoList = new ArrayList<>();
+        vidAdap = new videoAdapter(videoList, this){
+            @Override
+            public void update() {
+                showVideosList();
+            }
+        };
         showVideosList();
 
     }
@@ -58,8 +66,8 @@ public class VideosActivity extends AppCompatActivity {
         videoList.add(new VideoInfo("TestListVideo",Me.getMe().getLocation(),"Descrition lala",Me.getMe().getName()));
         videoList.add(new VideoInfo("SecondTestVideo",Me.getMe().getLocation(),"Descrition lala",Me.getMe().getName()));
 */
+        vidAdap.clear();
         videoList = VideoManager.getInstance().loadMyVideo();
-        vidAdap = new videoAdapter(videoList, this);
         vidAdap.addAll(videoList);
         //vidAdap.notifyDataSetChanged();
         lv.setAdapter(vidAdap);

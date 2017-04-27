@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.polymt.inf8405.tp3.baseclass.VideoInfo;
+import com.polymt.inf8405.tp3.baseclass.VideoManager;
 
 import java.util.List;
 
@@ -38,6 +39,10 @@ public class videoAdapter extends ArrayAdapter<VideoInfo> {
         public Button delete;
     }
 
+    public void update(){
+
+    }
+
     @Override
     public View getView(int pos, View cv, ViewGroup parent) {
 
@@ -50,7 +55,7 @@ public class videoAdapter extends ArrayAdapter<VideoInfo> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(layout.view_videos, null);
 
-            VideoInfo o = videosList.get(pos);
+            final VideoInfo o = videosList.get(pos);
             holder.orderName = (TextView) v.findViewById(id.namevideo);
             holder.orderName.setText(o.getName());
 
@@ -68,7 +73,8 @@ public class videoAdapter extends ArrayAdapter<VideoInfo> {
                     final int pos = (int) v.getTag();
                     build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            videosList.remove(pos);
+                            update();
+                            VideoManager.getInstance().deleteMyVideo(o.getUniqueId());
                             videoAdapter.this.notifyDataSetChanged();
                         }
                     });

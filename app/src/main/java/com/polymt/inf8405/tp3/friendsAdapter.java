@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.polymt.inf8405.tp3.baseclass.Friend;
+import com.polymt.inf8405.tp3.baseclass.Me;
 
 import java.util.List;
 
@@ -37,6 +38,9 @@ public class friendsAdapter extends ArrayAdapter<Friend> {
         public Button deleteFriend;
     }
 
+    public void update(){
+
+    }
     @Override
     public View getView(int pos, View cv, ViewGroup parent) {
 
@@ -48,7 +52,7 @@ public class friendsAdapter extends ArrayAdapter<Friend> {
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(layout.view_friends, null);
-            Friend o = friendsList.get(pos);
+            final Friend o = friendsList.get(pos);
             holder.orderName = (TextView) v.findViewById(id.friendname);
             holder.orderName.setText(o.getName());
             holder.deleteFriend = (Button) v.findViewById(id.deleteFriend);
@@ -65,7 +69,8 @@ public class friendsAdapter extends ArrayAdapter<Friend> {
                     final int pos = (int) v.getTag();
                     build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            friendsList.remove(pos);
+                            update();
+                            Me.getMe().removeFriend(o.getUniqueId());
                             friendsAdapter.this.notifyDataSetChanged();
                         }
                     });

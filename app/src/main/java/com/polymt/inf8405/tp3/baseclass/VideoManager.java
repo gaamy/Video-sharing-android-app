@@ -31,6 +31,10 @@ public class VideoManager {
         return new ArrayList<>();
     }
 
+    public void deleteMyVideo(int uniqueId){
+        //TODO delete the video
+    }
+
     void postVideo(VideoInfo video){
         //TODO:"unimplemented method";
     }

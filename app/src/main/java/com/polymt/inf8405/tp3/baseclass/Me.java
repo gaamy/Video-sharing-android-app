@@ -56,6 +56,10 @@ public class Me extends User {
         }
         return false;
     }
+    public boolean removeFriend(String uniqueId){
+        //TODO remove the friend
+        return true;
+    }
 
     public void setInvokeLocationFunc(Invokable inv){
         invokeLocation = inv;
