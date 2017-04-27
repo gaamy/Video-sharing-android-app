@@ -7,26 +7,29 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import com.polymt.inf8405.tp3.baseclass.Friend;
 import com.polymt.inf8405.tp3.baseclass.Me;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Wassim on 11/04/2017.
  */
 
-public class Friends extends AppCompatActivity {
+public class FriendsActivity extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<friend> friendList;
-    videoAdapter friendAdap;
+    List<Friend> friendList;
+    friendsAdapter friendAdap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends);
 
-        getSupportActionBar().setTitle("Friends list");
+        getSupportActionBar().setTitle("FriendsActivity list");
         // butListener();
 
         Me.getMe().getFriend();
@@ -38,11 +41,11 @@ public class Friends extends AppCompatActivity {
 
     private void showFriendsList(){
 
-        friendList = new ArrayList<friend>();
-        friendList.add(new friend("asd"));
-        friendList.add(new friend("asdasd"));
-
-//        friendAdap = new friendAdap(friendList, this);
+        /*friendList = new ArrayList<>();
+        friendList.add(new Friend("asd"));
+        friendList.add(new Friend("asdasd"));*/
+        friendList = Me.getMe().getFriend();
+        friendAdap = new friendsAdapter(friendList, this);
 //        friendAdap.addAll(friendList);
 
         //friendAdap.notifyDataSetChanged();
@@ -63,7 +66,7 @@ public class Friends extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_videos:
-                startActivity(new Intent(this, Videos.class));
+                startActivity(new Intent(this, VideosActivity.class));
                 return true;
 
             case R.id.action_map:

@@ -19,10 +19,13 @@ public abstract class User {
     }
     public User(String uniqueId){
         this.uniqueId = uniqueId;
+        //TODO remove this, its temporary
+        this.name = uniqueId;
         loadInfo();
     }
     private void loadInfo() {
         //TODO Load info associated with UID
         //Name, email,descrition
     }
+    public String getName(){return name;}
 }

@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     ContextHolder.setMainContext(LoginActivity.this);
                                     UserManager.getIntance().logging("name here");
-                                    Intent intent = new Intent(LoginActivity.this, Videos.class);
+                                    Intent intent = new Intent(LoginActivity.this, VideosActivity.class);
 
                                     startActivity(intent);
                                     finish();

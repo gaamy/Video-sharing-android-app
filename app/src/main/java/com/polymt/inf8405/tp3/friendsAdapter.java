@@ -10,40 +10,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.polymt.inf8405.tp3.baseclass.Friend;
+
 import java.util.List;
+
+import static com.polymt.inf8405.tp3.R.*;
 
 /**
  * Created by Wassim on 25/04/2017.
  */
 
-class friend {
+public class friendsAdapter extends ArrayAdapter<Friend> {
 
-    String name;
-    boolean selected= false;
-
-    public friend(String name){
-
-        super();
-        this.name= name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-}
-
-public class friendsAdapter extends ArrayAdapter<Friends> {
-
-    private List<Friends> friendsList;
+    private List<Friend> friendsList;
     private Context context;
 
-    public friendsAdapter(List<Friends> friendsList, Context context) {
-        super(context, R.layout.view_friends, friendsList);
+    public friendsAdapter(List<Friend> friendsList, Context context) {
+        super(context, layout.view_friends, friendsList);
         this.friendsList = friendsList;
         this.context = context;
     }
@@ -64,10 +47,11 @@ public class friendsAdapter extends ArrayAdapter<Friends> {
         if (cv == null) {
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.view_videos, null);
-
-            holder.orderName = (TextView) v.findViewById(R.id.name);
-            holder.deleteFriend = (Button) v.findViewById(R.id.delete);
+            v = inflater.inflate(layout.view_friends, null);
+            Friend o = friendsList.get(pos);
+            holder.orderName = (TextView) v.findViewById(id.friendname);
+            holder.orderName.setText(o.getName());
+            holder.deleteFriend = (Button) v.findViewById(id.deleteFriend);
 
             holder.deleteFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,7 +59,7 @@ public class friendsAdapter extends ArrayAdapter<Friends> {
 
                     AlertDialog.Builder build = new AlertDialog.Builder(context);
 
-                    build.setTitle("Delete this video");
+                    build.setTitle("Delete this Friend");
                     build.setMessage("Are you sure?");
                     build.setIcon(android.R.drawable.ic_dialog_alert);
                     final int pos = (int) v.getTag();
@@ -92,11 +76,11 @@ public class friendsAdapter extends ArrayAdapter<Friends> {
             });
 
         } else {
-            holder.orderName = (TextView) v.findViewById(R.id.name);
-            holder.deleteFriend = (Button) v.findViewById(R.id.delete);
+            holder.orderName = (TextView) v.findViewById(id.friendname);
+            holder.deleteFriend = (Button) v.findViewById(id.deleteFriend);
         }
         holder.deleteFriend.setTag(pos);
-        Friends o = friendsList.get(pos);
+
         //holder.orderName.setText(o.getName());
 
         //holder.checkbox.setChecked(o.isSelected());

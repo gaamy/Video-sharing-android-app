@@ -28,7 +28,7 @@ public class VideoManager {
             String uid = Me.getMe().uniqueId;
             //TODO load infos associatedwith my own video
         }
-        return null;
+        return new ArrayList<>();
     }
 
     void postVideo(VideoInfo video){

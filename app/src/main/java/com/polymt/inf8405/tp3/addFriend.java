@@ -1,7 +1,5 @@
 package com.polymt.inf8405.tp3;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -65,8 +63,8 @@ public class addFriend extends AppCompatActivity {
                     build.show();
                 }
 
-//                Intent i = new Intent(getBaseContext(), GroupActivity.class);
-//                startActivity(i);
+                Intent i = new Intent(getBaseContext(), FriendsActivity.class);
+                startActivity(i);
 
             }
         });

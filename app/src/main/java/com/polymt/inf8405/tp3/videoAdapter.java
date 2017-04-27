@@ -10,40 +10,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.polymt.inf8405.tp3.baseclass.VideoInfo;
+
 import java.util.List;
+
+import static com.polymt.inf8405.tp3.R.*;
 
 /**
  * Created by Wassim on 25/04/2017.
  */
 
-class video {
 
-    String name;
-    boolean selected= false;
+public class videoAdapter extends ArrayAdapter<VideoInfo> {
 
-    public video(String name){
-
-        super();
-        this.name= name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-}
-
-public class videoAdapter extends ArrayAdapter<Videos> {
-
-    private List<Videos> videosList;
+    private List<VideoInfo> videosList;
     private Context context;
 
-    public videoAdapter(List<Videos> videosList, Context context) {
-        super(context, R.layout.view_videos, videosList);
+    public videoAdapter(List<VideoInfo> videosList, Context context) {
+        super(context, layout.view_videos, videosList);
         this.videosList = videosList;
         this.context = context;
     }
@@ -64,10 +48,13 @@ public class videoAdapter extends ArrayAdapter<Videos> {
         if (cv == null) {
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.view_videos, null);
+            v = inflater.inflate(layout.view_videos, null);
 
-            holder.orderName = (TextView) v.findViewById(R.id.name);
-            holder.delete = (Button) v.findViewById(R.id.delete);
+            VideoInfo o = videosList.get(pos);
+            holder.orderName = (TextView) v.findViewById(id.namevideo);
+            holder.orderName.setText(o.getName());
+
+            holder.delete = (Button) v.findViewById(id.deletevideo);
 
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,11 +79,10 @@ public class videoAdapter extends ArrayAdapter<Videos> {
             });
 
         } else {
-            holder.orderName = (TextView) v.findViewById(R.id.name);
-            holder.delete = (Button) v.findViewById(R.id.delete);
+            holder.orderName = (TextView) v.findViewById(id.namevideo);
+            holder.delete = (Button) v.findViewById(id.deletevideo);
         }
         holder.delete.setTag(pos);
-        Videos o = videosList.get(pos);
         //holder.orderName.setText(o.getName());
 
         //holder.checkbox.setChecked(o.isSelected());

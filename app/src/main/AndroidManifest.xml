@@ -25,22 +25,22 @@
                 android:name="com.google.android.maps.v2.API_KEY"
                 android:value="AIzaSyAEZaQQk4GlLJHkn-Xx8M3wuthesK7pZ6g" />
         </activity>
-        <activity android:name=".Videos" >
+        <activity android:name=".VideosActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".Friends" />
+        <activity android:name=".FriendsActivity" />
         <activity android:name=".addFriend" />
 
         <activity
             android:name=".Share"
-            android:parentActivityName=".Videos">
+            android:parentActivityName=".VideosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Videos" />
+                android:value=".VideosActivity" />
         </activity>
         <activity android:name=".Settings" />
         <activity

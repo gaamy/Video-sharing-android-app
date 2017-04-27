@@ -51,7 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         switch (item.getItemId()) {
             case R.id.action_videos:
-                startActivity(new Intent(this, Videos.class));
+                startActivity(new Intent(this, VideosActivity.class));
                 return true;
 
             case R.id.action_friends:
