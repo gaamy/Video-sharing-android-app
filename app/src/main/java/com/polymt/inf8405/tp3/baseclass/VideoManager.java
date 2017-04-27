@@ -23,9 +23,12 @@ public class VideoManager {
     private VideoManager(){
 
     }
-    public List<VideoInfo> loadMyVideo(String uId){
-        //TODO load infos associatedwith my own video
-        return null;
+    public List<VideoInfo> loadMyVideo(){
+        if(Me.getMe()!=null) {
+            String uid = Me.getMe().uniqueId;
+            //TODO load infos associatedwith my own video
+        }
+        return new ArrayList<>();
     }
 
     void postVideo(VideoInfo video){

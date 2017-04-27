@@ -51,7 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         switch (item.getItemId()) {
             case R.id.action_videos:
-                startActivity(new Intent(this, Videos.class));
+                startActivity(new Intent(this, VideosActivity.class));
                 return true;
 
             case R.id.action_friends:
@@ -93,12 +93,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng coordinate = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
                         coordinate,18);
-                //CameraUpdate location = CameraUpdateFactory.newLatLng(
-                //        coordinate);
                 map.moveCamera(location);
 
                 int radius = 15;//TODO need to figure out the radius
 
+                Marker j =map.addMarker(new MarkerOptions()
+                        .position(coordinate)
+                        .title("You")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                j.setTag(-1);
                 List<VideoInfo> videoToPutMarker = VideoManager.getInstance().findVideoSurrounding(loc,radius);
                 if(videoToPutMarker==null)
                     return;
@@ -118,10 +121,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public boolean onMarkerClick(final Marker marker) {
         int uniqueId = (int)marker.getTag();
+        if(uniqueId==-1)
+            return false;
         //TODO pop message to show video
         Location loc = new Location("");
         loc.setLatitude(marker.getPosition().latitude);
         loc.setLongitude(marker.getPosition().longitude);
+
         if(Me.getMe().getLocation().distanceTo(loc)<=50){
 
             //Open message to ask for view of the video

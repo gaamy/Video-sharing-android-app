@@ -5,4 +5,7 @@ package com.polymt.inf8405.tp3.baseclass;
  */
 
 public class Friend extends User {
+    public Friend(String uid){
+        super(uid);
+    }
 }

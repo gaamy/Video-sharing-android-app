@@ -7,20 +7,28 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.VideoView;
 
 import com.polymt.inf8405.tp3.baseclass.ContextHolder;
 import com.polymt.inf8405.tp3.baseclass.Me;
+import com.polymt.inf8405.tp3.baseclass.VideoInfo;
+import com.polymt.inf8405.tp3.baseclass.VideoManager;
+
+import java.util.List;
 
 /**
  * Created by Wassim on 04/04/2017.
  */
 
-public class Videos extends AppCompatActivity {
+public class VideosActivity extends AppCompatActivity {
 
-
+    ListView lv;
     static final int REQUEST_VIDEO_CAPTURE = 1;
     VideoView vid;
+    List<VideoInfo> videoList;
+    videoAdapter vidAdap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,27 @@ public class Videos extends AppCompatActivity {
         //TODO set the user instead of asd
 
         getSupportActionBar().setTitle("My Videos");
-       // butListener();
+
+        VideoManager.getInstance().loadMyVideo();
+
+
+        lv = (ListView) findViewById(R.id.listview);
+        showVideosList();
+
+    }
+
+    private void showVideosList(){
+
+        /*videoList = new ArrayList<VideoInfo>();
+        videoList.add(new VideoInfo("TestListVideo",Me.getMe().getLocation(),"Descrition lala",Me.getMe().getName()));
+        videoList.add(new VideoInfo("SecondTestVideo",Me.getMe().getLocation(),"Descrition lala",Me.getMe().getName()));
+*/
+        videoList = VideoManager.getInstance().loadMyVideo();
+        vidAdap = new videoAdapter(videoList, this);
+        vidAdap.addAll(videoList);
+        //vidAdap.notifyDataSetChanged();
+        lv.setAdapter(vidAdap);
+
     }
 
     @Override
@@ -69,7 +97,7 @@ public class Videos extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_friends:
-                startActivity(new Intent(this, Friends.class));
+                startActivity(new Intent(this, FriendsActivity.class));
                 return true;
             case R.id.action_map:
                 startActivity(new Intent(this, MapsActivity.class));

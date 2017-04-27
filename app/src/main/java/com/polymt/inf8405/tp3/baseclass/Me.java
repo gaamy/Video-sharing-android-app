@@ -11,6 +11,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,18 +41,20 @@ public class Me extends User {
     }
 
     private void loadVideos() {
-        VideoManager.getInstance().loadMyVideo(uniqueId);
+        VideoManager.getInstance().loadMyVideo();
     }
 
     private void loadFriend() {
         //TODO load friends from database
     }
 
-    public void addFriend(String email){
+    public boolean addFriend(String email){
         //TODO add the friend
         if(true){//add successfull
             loadFriend();
+            return true;
         }
+        return false;
     }
 
     public void setInvokeLocationFunc(Invokable inv){

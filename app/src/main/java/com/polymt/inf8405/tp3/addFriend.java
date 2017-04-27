@@ -1,7 +1,5 @@
 package com.polymt.inf8405.tp3;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.polymt.inf8405.tp3.baseclass.Me;
 
 /**
  * Created by Wassim on 25/04/2017.
@@ -39,25 +39,32 @@ public class addFriend extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //EditText text = (EditText)findViewById(R.id.editTextEmail);
+                EditText text = (EditText)findViewById(R.id.editTextEmail);
 
 
-                //TODO backend
+                Me.getMe().addFriend(text.getText().toString());
 
-                AlertDialog.Builder build = new AlertDialog.Builder(addFriend.this);
-                build.setTitle("Friend added !");
-                build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                if(Me.getMe().addFriend(text.getText().toString())) {
+                    AlertDialog.Builder build = new AlertDialog.Builder(addFriend.this);
+                    build.setTitle("Friend added !");
+                    build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    build.show();
+                }
+                else {
+                    AlertDialog.Builder build = new AlertDialog.Builder(addFriend.this);
+                    build.setTitle("Email address could not be found !");
+                    build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    build.show();
+                }
 
-                    }
-                });
-
-                //build.setCancelable(true);
-                build.show();
-
-
-//                Intent i = new Intent(getBaseContext(), GroupActivity.class);
-//                startActivity(i);
+                Intent i = new Intent(getBaseContext(), FriendsActivity.class);
+                startActivity(i);
 
             }
         });
