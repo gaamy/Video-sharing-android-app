@@ -2,7 +2,6 @@ package com.polymt.inf8405.tp3.baseclass;
 
 import android.graphics.Bitmap;
 import android.location.Location;
-import android.media.Image;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -13,23 +12,23 @@ import java.util.Date;
  */
 
 public class VideoInfo {
-    private int uniqueId;
+    private String uniqueId;
     private Location videoLocation;
-    private byte[] rawData;
+    private byte[] data;
     private Date date;
     private Bitmap thumbnail;
     private String description;
     private String name;
     private String nameOfPoster;
 
-    public boolean hasVideoData(){return rawData!=null;}
+    public boolean hasVideoData(){return data !=null;}
     public LatLng getCoordinate(){return new LatLng(videoLocation.getLatitude(), videoLocation.getLongitude());}
     public String getName(){return name;}
     public Bitmap getThumbnail(){return thumbnail;}
     public String getDescription(){return description;}
-    public int getUniqueId(){return uniqueId;}
+    public String getUniqueId(){return uniqueId;}
     public void setVideoData(){
-        //TODO whatever video data is
+
     }
 
     @Override
@@ -38,10 +37,49 @@ public class VideoInfo {
     }
 
     public VideoInfo(String name,Location location,String description,String nameOfPoster){
-        uniqueId=1;
         this.name = name;
         this.videoLocation= location;
         this.description = description;
         this.nameOfPoster = nameOfPoster;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+
+    public Location getVideoLocation() {
+        return videoLocation;
+    }
+
+    public void setVideoLocation(Location videoLocation) {
+        this.videoLocation = videoLocation;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNameOfPoster() {
+        return nameOfPoster;
+    }
+
+    public void setNameOfPoster(String nameOfPoster) {
+        this.nameOfPoster = nameOfPoster;
+    }
+
+    public byte[] getData() {
+        return data;
     }
 }

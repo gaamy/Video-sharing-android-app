@@ -2,7 +2,7 @@ package com.polymt.inf8405.tp3.baseclass;
 
 import android.location.Location;
 
-import com.google.android.gms.maps.model.LatLng;
+import com.polymt.inf8405.tp3.database.DatabaseManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ import java.util.List;
 
 public class VideoManager {
     private static VideoManager m_videoManager;
+    private DatabaseManager databaseManager;
+    //private MediaStorageManager mediaStorageManager;
     public static VideoInfo testVideoInfo;
     public static VideoManager getInstance(){
         if(m_videoManager == null){
@@ -21,7 +23,8 @@ public class VideoManager {
         return m_videoManager;
     }
     private VideoManager(){
-
+        databaseManager = DatabaseManager.getInstance();
+        //mediaStorageManager = MediaStorageManager.getInstance();
     }
     public List<VideoInfo> loadMyVideo(){
         if(Me.getMe()!=null) {
@@ -32,12 +35,13 @@ public class VideoManager {
     }
 
     void postVideo(VideoInfo video){
-        //TODO:"unimplemented method";
+        databaseManager.createNewVideo(video);
+        //mediaStorageManager.uploadVideoData(video.getUniqueId(),video.getData());
+
     }
 
     VideoInfo gatherVideoData(String videoId ){
-        //TODO:"unimplemented method";
-        return null;
+        return databaseManager.gatherVideo(videoId);
     }
 
     public List<VideoInfo> findVideoSurrounding(Location position, int radius){
