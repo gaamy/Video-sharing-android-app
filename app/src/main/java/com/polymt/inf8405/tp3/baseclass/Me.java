@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Me extends User {
     private static Me m_me;
-    private List<Friend> friends;
+    private List<User> friends;
     private Location currentLocation;
     private Invokable invokeLocation;
     public static Me getMe(){
@@ -45,19 +45,19 @@ public class Me extends User {
     }
 
     private void loadFriend() {
-        //TODO load friends from database
+        friends = UserManager.getIntance().getUserFriends(uniqueId);
     }
 
     public boolean addFriend(String email){
         //TODO add the friend
-        if(true){//add successfull
+        if(UserManager.getIntance().addFriend(uniqueId,email)){//add successfull
             loadFriend();
             return true;
         }
         return false;
     }
-    public boolean removeFriend(String uniqueId){
-        //TODO remove the friend
+    public boolean removeFriend(String friendUniqueId){
+        UserManager.getIntance().removeFriend(uniqueId,friendUniqueId);
         return true;
     }
 
@@ -117,7 +117,7 @@ public class Me extends User {
         return currentLocation;
     }
 
-    public List<Friend> getFriend(){
+    public List<User> getFriend(){
         if(friends!=null){
             return friends;
         }else{

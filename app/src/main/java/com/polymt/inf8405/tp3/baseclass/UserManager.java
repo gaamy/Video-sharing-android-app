@@ -3,6 +3,8 @@ package com.polymt.inf8405.tp3.baseclass;
 
 import com.polymt.inf8405.tp3.database.DatabaseManager;
 
+import java.util.List;
+
 /**
  * Created by Louis-Philippe on 4/6/2017.
  */
@@ -26,12 +28,12 @@ public class UserManager {
     }
 
 
-    void addUser(String userName, String userMail){
+    public void addUser(String userName, String userMail){
         User newUser = new User(userName,userMail);
         databaseManager.createNewUSer(newUser);
     }
 
-    String findUserId(String userName){
+    public String findUserId(String userName){
         String id = databaseManager.findUserId(userName);
         if(id == null){
             return null;
@@ -39,7 +41,7 @@ public class UserManager {
         return id;
     }
 
-    void addFriend(String userId, String friendUserId){
+    public boolean addFriend(String userId, String friendUserId){
         //gather involved users
         User friend = databaseManager.gatherUser(friendUserId);
         User meUser = Me.getMe();
@@ -51,9 +53,10 @@ public class UserManager {
         //propagate the change
         databaseManager.updateDatabaseUser(meUser);
         databaseManager.updateDatabaseUser(friend);
+        return true;
     }
 
-    void removeFriend(String userId, String friendUserId){
+    public void removeFriend(String userId, String friendUserId){
         //gather involved users
         User friend = databaseManager.gatherUser(friendUserId);
         User meUser = Me.getMe();
@@ -69,5 +72,9 @@ public class UserManager {
         //propagate the change
         databaseManager.updateDatabaseUser(meUser);
         databaseManager.updateDatabaseUser(friend);
+    }
+
+    public List<User> getUserFriends(String uid){
+        return null;
     }
 }

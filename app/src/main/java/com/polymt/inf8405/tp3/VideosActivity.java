@@ -96,6 +96,8 @@ public class VideosActivity extends AppCompatActivity {
             if (intent != null && intent.getExtras() != null) {
                 Uri videoUri = intent.getData();
                 vid.setVideoURI(videoUri);
+                VideoInfo vi = new VideoInfo("video",Me.getMe().getLocation(),"no description",Me.getMe().getName());
+                VideoManager.getInstance().postVideo(vi);
             }
         }
     }
