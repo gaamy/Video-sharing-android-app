@@ -40,7 +40,9 @@ public class DatabaseManager {
     public List<VideoInfo> getVideos(){
         return videos;
     }
-
+    public List<User> getUsers(){
+        return users;
+    }
     public void finalize(){
         //detach listeners
         mDatabaseUsers.removeEventListener(userListener);

@@ -3,6 +3,7 @@ package com.polymt.inf8405.tp3.baseclass;
 
 import com.polymt.inf8405.tp3.database.DatabaseManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,12 +59,17 @@ public class UserManager {
         } else {
             return false;
         }
-
-
     }
 
     public List<User> getUserFriends(String uid){
-        return null;
+        List<User> friends = new ArrayList<>();
+        List<User> users = databaseManager.getUsers();
+        for (User user:users){
+            if(user.getFriends().containsKey(uid)){
+                friends.add(user);
+            }
+        }
+        return friends;
     }
 
     public void removeFriend(String userId, String friendUserId){
