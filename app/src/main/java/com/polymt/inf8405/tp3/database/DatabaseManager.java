@@ -26,6 +26,7 @@ public class DatabaseManager {
     private List<User> users;
     private List<VideoInfo> videos;
 
+
     public static DatabaseManager getInstance(){
         if(mDatabaseManager == null){
             mDatabaseManager = new DatabaseManager();
@@ -34,6 +35,10 @@ public class DatabaseManager {
     }
     private DatabaseManager(){
         initialize();
+    }
+
+    public List<VideoInfo> getVideos(){
+        return videos;
     }
 
     public void finalize(){
@@ -124,6 +129,14 @@ public class DatabaseManager {
             }
         }
         return result;
+    }
+
+    public User gatherUserByMail(String email){
+        for (User user :users){
+            if(user.getEmail().equals(email))
+                return user;
+        }
+        return null;
     }
 
 
