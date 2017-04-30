@@ -20,6 +20,7 @@ public class VideoInfo {
     private String description;
     private String name;
     private String nameOfPoster;
+    private String ownerId;
 
     public boolean hasVideoData(){return data !=null;}
     public LatLng getCoordinate(){return new LatLng(videoLocation.getLatitude(), videoLocation.getLongitude());}
@@ -82,4 +83,16 @@ public class VideoInfo {
     public byte[] getData() {
         return data;
     }
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
 }
+

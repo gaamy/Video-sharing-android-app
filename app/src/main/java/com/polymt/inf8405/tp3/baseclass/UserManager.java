@@ -41,19 +41,29 @@ public class UserManager {
         return id;
     }
 
-    public boolean addFriend(String userId, String friendUserId){
+    public boolean addFriend(String userId, String friendMail){
         //gather involved users
-        User friend = databaseManager.gatherUser(friendUserId);
-        User meUser = Me.getMe();
+        if(databaseManager.gatherUserByMail(friendMail) != null){
+            User friend = databaseManager.gatherUserByMail(friendMail);
+            User meUser = Me.getMe();
 
-        //update local users
-        friend.getFriends().put(meUser.getUniqueId(),true);
-        meUser.getFriends().put(friend.getUniqueId(),true);
+            //update local users
+            friend.getFriends().put(meUser.getUniqueId(),true);
+            meUser.getFriends().put(friend.getUniqueId(),true);
 
-        //propagate the change
-        databaseManager.updateDatabaseUser(meUser);
-        databaseManager.updateDatabaseUser(friend);
-        return true;
+            //propagate the change
+            databaseManager.updateDatabaseUser(meUser);
+            databaseManager.updateDatabaseUser(friend);
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+    public List<User> getUserFriends(String uid){
+        return null;
     }
 
     public void removeFriend(String userId, String friendUserId){

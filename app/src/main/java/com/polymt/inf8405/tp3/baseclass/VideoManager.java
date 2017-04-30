@@ -16,6 +16,7 @@ public class VideoManager {
     private DatabaseManager databaseManager;
     //private MediaStorageManager mediaStorageManager;
     public static VideoInfo testVideoInfo;
+
     public static VideoManager getInstance(){
         if(m_videoManager == null){
             m_videoManager = new VideoManager();
@@ -29,13 +30,13 @@ public class VideoManager {
     public List<VideoInfo> loadMyVideo(){
         if(Me.getMe()!=null) {
             String uid = Me.getMe().uniqueId;
-            //TODO load infos associatedwith my own video
+            return databaseManager.gatherUserVideos(uid);
         }
         return new ArrayList<>();
     }
 
     public void deleteMyVideo(String uniqueId){
-        //TODO delete the video
+       databaseManager.deleteVideo(uniqueId);
     }
 
     void postVideo(VideoInfo video){

@@ -26,6 +26,7 @@ public class DatabaseManager {
     private List<User> users;
     private List<VideoInfo> videos;
 
+
     public static DatabaseManager getInstance(){
         if(mDatabaseManager == null){
             mDatabaseManager = new DatabaseManager();
@@ -34,6 +35,10 @@ public class DatabaseManager {
     }
     private DatabaseManager(){
         initialize();
+    }
+
+    public List<VideoInfo> getVideos(){
+        return videos;
     }
 
     public void finalize(){
@@ -102,6 +107,11 @@ public class DatabaseManager {
         updatedUserReference.setValue(newVideo);
     }
 
+    public void deleteVideo(String videoId){
+        DatabaseReference updatedUserReference = mFirebaseDatabase.getReference().child("videos/"+videoId);
+        updatedUserReference.removeValue();
+    }
+
     public VideoInfo gatherVideo(String videoId ){
         for (VideoInfo videoMetadata : videos){
             if (videoMetadata.getUniqueId().equals(videoId)){
@@ -111,25 +121,22 @@ public class DatabaseManager {
         return null;
     }
 
+    public List<VideoInfo> gatherUserVideos(String userId){
+        List<VideoInfo> result = new ArrayList<>();
+        for(VideoInfo video : videos) {
+            if(video.getOwnerId().equals(userId)){
+                result.add(video);
+            }
+        }
+        return result;
+    }
 
-    public void testMethod(String name, String email){
-
-        User testUser = new User(name,email);
-        //createNewUser
-        createNewUSer(testUser);
-
-        //retreiveUser
-        gatherUser(testUser.getUniqueId());
-
-
-        //modify user
-        testUser.setName("Wassim");
-        //updateDatabaseUser
-        updateDatabaseUser(testUser);
-
-        //retreive user
-        gatherUser(testUser.getUniqueId());
-
+    public User gatherUserByMail(String email){
+        for (User user :users){
+            if(user.getEmail().equals(email))
+                return user;
+        }
+        return null;
     }
 
 
