@@ -34,7 +34,7 @@ public class VideoManager {
         return new ArrayList<>();
     }
 
-    public void deleteMyVideo(int uniqueId){
+    public void deleteMyVideo(String uniqueId){
         //TODO delete the video
     }
 
