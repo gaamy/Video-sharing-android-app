@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.polymt.inf8405.tp3.baseclass.Friend;
 import com.polymt.inf8405.tp3.baseclass.Me;
+import com.polymt.inf8405.tp3.baseclass.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 public class FriendsActivity extends AppCompatActivity {
 
     ListView lv;
-    List<Friend> friendList;
+    List<User> friendList;
     friendsAdapter friendAdap;
 
     @Override

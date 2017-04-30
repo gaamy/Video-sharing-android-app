@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.polymt.inf8405.tp3.baseclass.Friend;
 import com.polymt.inf8405.tp3.baseclass.Me;
+import com.polymt.inf8405.tp3.baseclass.User;
 
 import java.util.List;
 
@@ -21,12 +22,12 @@ import static com.polymt.inf8405.tp3.R.*;
  * Created by Wassim on 25/04/2017.
  */
 
-public class friendsAdapter extends ArrayAdapter<Friend> {
+public class friendsAdapter extends ArrayAdapter<User> {
 
-    private List<Friend> friendsList;
+    private List<User> friendsList;
     private Context context;
 
-    public friendsAdapter(List<Friend> friendsList, Context context) {
+    public friendsAdapter(List<User> friendsList, Context context) {
         super(context, layout.view_friends, friendsList);
         this.friendsList = friendsList;
         this.context = context;
@@ -52,7 +53,7 @@ public class friendsAdapter extends ArrayAdapter<Friend> {
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(layout.view_friends, null);
-            final Friend o = friendsList.get(pos);
+            final User o = friendsList.get(pos);
             holder.orderName = (TextView) v.findViewById(id.friendname);
             holder.orderName.setText(o.getName());
             holder.deleteFriend = (Button) v.findViewById(id.deleteFriend);

@@ -58,8 +58,6 @@ public class UserManager {
         } else {
             return false;
         }
-
-
     }
 
     public List<User> getUserFriends(String uid){
@@ -82,9 +80,5 @@ public class UserManager {
         //propagate the change
         databaseManager.updateDatabaseUser(meUser);
         databaseManager.updateDatabaseUser(friend);
-    }
-
-    public List<User> getUserFriends(String uid){
-        return null;
     }
 }

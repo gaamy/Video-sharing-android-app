@@ -39,7 +39,7 @@ public class VideoManager {
        databaseManager.deleteVideo(uniqueId);
     }
 
-    void postVideo(VideoInfo video){
+    public void postVideo(VideoInfo video){
         databaseManager.createNewVideo(video);
         //mediaStorageManager.uploadVideoData(video.getUniqueId(),video.getData());
 
