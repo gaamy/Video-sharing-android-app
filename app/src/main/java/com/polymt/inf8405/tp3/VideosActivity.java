@@ -12,6 +12,7 @@ import android.widget.VideoView;
 
 import com.polymt.inf8405.tp3.baseclass.ContextHolder;
 import com.polymt.inf8405.tp3.baseclass.Me;
+import com.polymt.inf8405.tp3.baseclass.MyLocation;
 import com.polymt.inf8405.tp3.baseclass.User;
 import com.polymt.inf8405.tp3.baseclass.VideoInfo;
 import com.polymt.inf8405.tp3.baseclass.VideoManager;
@@ -108,7 +109,7 @@ public class VideosActivity extends AppCompatActivity {
             if (intent != null && intent.getExtras() != null) {
                 Uri videoUri = intent.getData();
                 vid.setVideoURI(videoUri);
-                VideoInfo vi = new VideoInfo("video",Me.getMe().getLocation(),"no description",Me.getMe().getName());
+                VideoInfo vi = new VideoInfo("video", (MyLocation) Me.getMe().getLocation(),"no description",Me.getMe().getName());
                 VideoManager.getInstance().postVideo(vi);
             }
         }

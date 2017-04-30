@@ -89,6 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Invokable in = new Invokable(){
             @Override
             public void invoke() {
+                map.clear();
                 Location loc = Me.getMe().getLocation();
                 LatLng coordinate = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
@@ -120,8 +121,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(final Marker marker) {
-        int uniqueId = (int)marker.getTag();
-        if(uniqueId==-1)
+        String uniqueId = marker.getTag().toString();
+        if(uniqueId=="-1")
             return false;
         //TODO pop message to show video
         Location loc = new Location("");

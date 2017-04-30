@@ -14,4 +14,5 @@ public class MyLocation extends Location {
     public MyLocation(String provider) {
         super(provider);
     }
+
 }

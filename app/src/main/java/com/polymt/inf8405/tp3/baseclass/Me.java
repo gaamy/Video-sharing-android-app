@@ -20,7 +20,6 @@ import java.util.List;
 
 public class Me extends User {
     private static Me m_me;
-    private List<User> friends;
     private Location currentLocation;
     private Invokable invokeLocation;
     public static Me getMe(){
@@ -42,7 +41,6 @@ public class Me extends User {
     }
 
     private void loadFriend() {
-        friends = UserManager.getIntance().getUserFriends(uniqueId);
     }
 
     public boolean addFriend(String email){
@@ -55,6 +53,7 @@ public class Me extends User {
     }
     public boolean removeFriend(String friendUniqueId){
         UserManager.getIntance().removeFriend(uniqueId,friendUniqueId);
+        loadFriend();
         return true;
     }
 
@@ -116,7 +115,10 @@ public class Me extends User {
 
     public List<User> getFriend(){
         if(friends!=null){
-            return friends;
+            List<User> a = new ArrayList<>();
+            for(String uiq : friends.keySet()){
+                a.add(new User(uiq));
+            }return a;
         }else{
             return new ArrayList<>();
         }

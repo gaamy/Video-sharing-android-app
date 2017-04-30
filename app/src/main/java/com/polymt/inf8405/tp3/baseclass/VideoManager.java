@@ -56,9 +56,9 @@ public class VideoManager {
     }
     private List<VideoInfo> findVideoSurrounding(Location position, int radius, String userId, String privacy){
 
-        ArrayList<VideoInfo> vi = new ArrayList<>();
-
+        //ArrayList<VideoInfo> vi = new ArrayList<>();
+        return DatabaseManager.getInstance().getVideos();
         //TODO:"unimplemented method";
-        return vi;
+        //return vi;
     }
 }

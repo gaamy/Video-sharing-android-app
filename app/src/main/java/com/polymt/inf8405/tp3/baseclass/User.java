@@ -1,5 +1,8 @@
 package com.polymt.inf8405.tp3.baseclass;
 
+import com.polymt.inf8405.tp3.database.DatabaseManager;
+
+import java.sql.DatabaseMetaData;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +25,7 @@ public class User {
         this.uniqueId = uniqueId;
         //TODO remove this, its temporary
         this.name = uniqueId;
+        friends = new HashMap<>();
         loadInfo();
     }
 
@@ -35,7 +39,9 @@ public class User {
     }
 
     private void loadInfo() {
-        //TODO Load info associated with UID
+        User u = DatabaseManager.getInstance().gatherUser(uniqueId);
+        this.name = u.getName();
+        this.email = u.getEmail();
         //Name, email,descrition
     }
     public String getName(){return name;}
