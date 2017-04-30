@@ -31,7 +31,7 @@ public class UserManager {
 
     public void addUser(String userName, String userMail){
         User newUser = new User(userName,userMail);
-        databaseManager.createNewUSer(newUser);
+        databaseManager.createNewUser(newUser);
     }
 
     String findUserId(String userName){

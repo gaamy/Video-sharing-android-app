@@ -12,8 +12,10 @@ import android.widget.VideoView;
 
 import com.polymt.inf8405.tp3.baseclass.ContextHolder;
 import com.polymt.inf8405.tp3.baseclass.Me;
+import com.polymt.inf8405.tp3.baseclass.User;
 import com.polymt.inf8405.tp3.baseclass.VideoInfo;
 import com.polymt.inf8405.tp3.baseclass.VideoManager;
+import com.polymt.inf8405.tp3.database.DatabaseManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,17 @@ public class VideosActivity extends AppCompatActivity {
 
 
         ContextHolder.setMainContext(this);
-        Me.setMe("ASD");
+
+        DatabaseManager databaseManager = DatabaseManager.getInstance();
+        databaseManager.fillDatabaseForDemo();
+
+        User me = databaseManager.gatherUserByMail("gabriel.amyot@gmail.com");
+
+        while (me == null){
+            me = databaseManager.gatherUserByMail("gabriel.amyot@gmail.com");
+        }
+
+        Me.setMe(me.getUniqueId());
         //TODO set the user instead of asd
 
         getSupportActionBar().setTitle("My Videos");

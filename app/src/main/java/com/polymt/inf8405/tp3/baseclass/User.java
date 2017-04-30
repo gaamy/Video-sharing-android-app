@@ -16,6 +16,8 @@ public class User {
     protected Map<String,Boolean> ownedVideos;
 
 
+    public User(){}
+
     public User(String uniqueId){
         this.uniqueId = uniqueId;
         //TODO remove this, its temporary
