@@ -102,6 +102,11 @@ public class DatabaseManager {
         updatedUserReference.setValue(newVideo);
     }
 
+    public void deleteVideo(String videoId){
+        DatabaseReference updatedUserReference = mFirebaseDatabase.getReference().child("videos/"+videoId);
+        updatedUserReference.removeValue();
+    }
+
     public VideoInfo gatherVideo(String videoId ){
         for (VideoInfo videoMetadata : videos){
             if (videoMetadata.getUniqueId().equals(videoId)){
@@ -111,25 +116,14 @@ public class DatabaseManager {
         return null;
     }
 
-
-    public void testMethod(String name, String email){
-
-        User testUser = new User(name,email);
-        //createNewUser
-        createNewUSer(testUser);
-
-        //retreiveUser
-        gatherUser(testUser.getUniqueId());
-
-
-        //modify user
-        testUser.setName("Wassim");
-        //updateDatabaseUser
-        updateDatabaseUser(testUser);
-
-        //retreive user
-        gatherUser(testUser.getUniqueId());
-
+    public List<VideoInfo> gatherUserVideos(String userId){
+        List<VideoInfo> result = new ArrayList<>();
+        for(VideoInfo video : videos) {
+            if(video.getOwnerId().equals(userId)){
+                result.add(video);
+            }
+        }
+        return result;
     }
 
 
