@@ -11,9 +11,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,4 +121,7 @@ public class Me extends User {
             return new ArrayList<>();
         }
     }
+
+
+
 }

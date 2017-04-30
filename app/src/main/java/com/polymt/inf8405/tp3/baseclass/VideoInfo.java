@@ -13,7 +13,7 @@ import java.util.Date;
 
 public class VideoInfo {
     private String uniqueId;
-    private Location videoLocation;
+    private MyLocation videoLocation;
     private byte[] data;
     private Date date;
     private Bitmap thumbnail;
@@ -22,6 +22,8 @@ public class VideoInfo {
     private String nameOfPoster;
     private String ownerId;
 
+
+    public VideoInfo(){}
     public boolean hasVideoData(){return data !=null;}
     public LatLng getCoordinate(){return new LatLng(videoLocation.getLatitude(), videoLocation.getLongitude());}
     public String getName(){return name;}
@@ -37,7 +39,7 @@ public class VideoInfo {
         return name+" Posted by "+ nameOfPoster;
     }
 
-    public VideoInfo(String name,Location location,String description,String nameOfPoster){
+    public VideoInfo(String name,MyLocation location,String description,String nameOfPoster){
         this.name = name;
         this.videoLocation= location;
         this.description = description;
@@ -52,7 +54,7 @@ public class VideoInfo {
         return videoLocation;
     }
 
-    public void setVideoLocation(Location videoLocation) {
+    public void setVideoLocation(MyLocation videoLocation) {
         this.videoLocation = videoLocation;
     }
 
